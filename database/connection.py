@@ -1,13 +1,12 @@
 from sqlalchemy import create_engine, inspect
 from sqlalchemy_utils import database_exists
-from sqlalchemy import Column, Integer, String, MetaData, Table, Boolean, ForeignKey
+from sqlalchemy import MetaData
 from sqlalchemy.orm import relationship
 from .tables import *
 
 class Connection():
     def __init__(self):
-        self.engine = create_engine(
-            'postgresql://postgres:postgres@localhost/baseconhecimento')
+        self.engine = create_engine('postgresql://postgres:postgres@localhost/baseconhecimento')
         self.inspect = inspect(self.engine)
 
         self.metadata = MetaData()
