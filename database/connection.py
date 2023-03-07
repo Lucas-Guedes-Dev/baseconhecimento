@@ -20,3 +20,6 @@ class Connection():
         
         Usuario.__table__.create(bind=self.engine, checkfirst=True)
         Pessoa.__table__.create(bind=self.engine, checkfirst=True)
+        Permissao.__table__.create(bind=self.engine, checkfirst=True)
+        Conhecimento.__table__.create(bind=self.engine, checkfirst=True)
+        Anexo.__table__.create(bind=self.engine, checkfirst=True)
