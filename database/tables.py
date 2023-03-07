@@ -1,8 +1,6 @@
 from sqlalchemy import Column, Integer, String, ForeignKey, Boolean, Text
-from sqlalchemy.orm import relationship, DeclarativeBase, mapped_column
+from sqlalchemy.orm import relationship
 from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy.orm import Mapped
-from sqlalchemy.orm import mapped_column
 
 Base = declarative_base()
 
@@ -38,6 +36,7 @@ class Conhecimento(Base):
     titulo = Column(String)
     texto_ajuda = Column(Text)
     anexos = relationship("Anexo", back_populates="conhecimento")
+    relacionados = relationship("Relacionados", back_populates='conhecimento')
 
 class Anexo(Base):
     __tablename__ = 'anexo'
@@ -45,3 +44,10 @@ class Anexo(Base):
     anexo = Column(Text)
     id_conhecimento = Column(Integer, ForeignKey('conhecimento.id_conhecimento'))
     anexo_r = relationship("Conhecimento", back_populates='anexo')
+
+class Relacionados(Base):
+    __tablename__ = 'relacionados'
+    id_relacao = Column(Integer, primary_key=True)
+    id_conhecimento_base = Column(Integer, ForeignKey('conhecimento.id_conhecimento'))
+    id_conhecimento_relacionado = Column(Integer, ForeignKey('conhecimento.id_conhecimento'))
+    conhecimento = relationship("Conhecimento", back_populates='relacionados')

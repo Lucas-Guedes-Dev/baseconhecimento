@@ -21,3 +21,4 @@ class Connection():
         Permissao.__table__.create(bind=self.engine, checkfirst=True)
         Conhecimento.__table__.create(bind=self.engine, checkfirst=True)
         Anexo.__table__.create(bind=self.engine, checkfirst=True)
+        Relacionados.__table__.create(bind=self.engine, checkfirst=True)
