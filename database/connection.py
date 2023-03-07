@@ -17,7 +17,6 @@ class Connection():
             self.create_tables()
 
     def create_tables(self):
-        
         Usuario.__table__.create(bind=self.engine, checkfirst=True)
         Pessoa.__table__.create(bind=self.engine, checkfirst=True)
         Permissao.__table__.create(bind=self.engine, checkfirst=True)
