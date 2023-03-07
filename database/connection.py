@@ -28,12 +28,12 @@ class Connection():
 
             if not self.inspect.has_table('pessoas'):
                 Table('pessoas', self.metadata,
-                    id = Column(Integer, primary_key=True),
-                    nome = Column(String),
-                    documento = Column(String),
-                    tipo_documento = Column(String),
-                    usuarios_id = Column(Integer, ForeignKey('usuarios.id')),
-                    usuarios = relationship('Usuarios', back_populates='pessoas')
+                    Column('id', Integer, primary_key=True),
+                    Column('nome', String),
+                    Column('documento', String),
+                    Column('tipo_documento', String),
+                    Column(Integer, ForeignKey('usuarios.id')),
+                    id = relationship('Usuarios', back_populates='pessoas')
                     )
 
 
