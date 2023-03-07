@@ -2,7 +2,7 @@ from sqlalchemy import create_engine, inspect
 from sqlalchemy_utils import database_exists
 from sqlalchemy import Column, Integer, String, MetaData, Table, Boolean, ForeignKey
 from sqlalchemy.orm import relationship
-
+from .tables import *
 
 class Connection():
     def __init__(self):
@@ -17,30 +17,6 @@ class Connection():
             self.create_tables()
 
     def create_tables(self):
-        try:
-            if not self.inspect.has_table('usuarios'):
-                Table('usuarios', self.metadata,
-                    Column('id', Integer, primary_key=True),
-                    Column('username', String),
-                    Column('senha', String),
-                    Column('ativo', Boolean, default=True)
-                    )
-
-            if not self.inspect.has_table('pessoas'):
-                Table('pessoas', self.metadata,
-                    Column('id', Integer, primary_key=True),
-                    Column('nome', String),
-                    Column('documento', String),
-                    Column('tipo_documento', String),
-                    Column(Integer, ForeignKey('usuarios.id')),
-                    id = relationship('Usuarios', back_populates='pessoas')
-                    )
-
-
-            self.metadata.create_all(self.engine)
-
-            return True
-
-        except Exception as e:
-            print(e)
-            return False
+        
+        Usuario.__table__.create(bind=self.engine, checkfirst=True)
+        Pessoa.__table__.create(bind=self.engine, checkfirst=True)
