@@ -4,8 +4,6 @@ from sqlalchemy import MetaData
 from sqlalchemy.orm import  Session, registry
 from .tables import *
 
-
-
 class Connection():
     def __init__(self):
         self.engine = create_engine('postgresql://postgres:postgres@localhost/baseconhecimento')
