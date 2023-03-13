@@ -20,7 +20,6 @@ class Connection():
             self.create_tables()
 
     def add_user(self):
-        
         session = Session(bind=self.engine)
 
         usuario = Usuario(username='admin', senha='1234', ativo=True)
