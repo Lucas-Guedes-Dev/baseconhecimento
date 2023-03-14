@@ -3,7 +3,6 @@ from sqlalchemy_utils import database_exists
 from sqlalchemy import MetaData
 from sqlalchemy.orm import Session, registry
 from .tables import *
-import requests
 
 class Connection():
     def __init__(self):
