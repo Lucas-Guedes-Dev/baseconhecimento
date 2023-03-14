@@ -2,7 +2,7 @@ from sqlalchemy import create_engine, inspect
 from sqlalchemy_utils import database_exists
 from sqlalchemy import MetaData
 from sqlalchemy.orm import Session, registry
-from tables import *
+from .tables import *
 
 class Connection():
     def __init__(self):
