@@ -1,8 +1,9 @@
 from sqlalchemy import create_engine, inspect
 from sqlalchemy_utils import database_exists
 from sqlalchemy import MetaData
-from sqlalchemy.orm import  Session, registry
+from sqlalchemy.orm import Session, registry
 from .tables import *
+import requests
 
 class Connection():
     def __init__(self):
@@ -22,10 +23,9 @@ class Connection():
     def add_user(self):
         session = Session(bind=self.engine)
 
-        usuario = Usuario(username='admin', senha='1234', ativo=True)
-
         usuario_list = session.query(Usuario).filter_by(username='admin').all()
 
+        usuario = Usuario(username='admin', senha='1234', ativo=True)
         if not usuario_list:
             session.add(usuario)
             session.commit()

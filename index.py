@@ -1,18 +1,17 @@
-from flask import Flask
-from database.connection import Connection 
+from flask import Flask, request, jsonify
+from controllers.controller_usuario import ControllerUsuario
 app = Flask(__name__)
 
-@app.route('/inicio')
-def inicio():
-    return 'ola mundo'
+@app.route('/baseconhecimento/v1/usuario', methods=['GET', 'POST'])
+def usuario():
+    if request.method == 'POST':
+        controller = ControllerUsuario()
 
-@app.route('/create-db')
-def create_db():
-    connection = Connection()
+        dados_list = request.get_json()
 
-    connection.create_db()
-
-    return 'feito' 
+        return jsonify(controller.insert_or_update(dados_list))  
+    else:
+        pass
 
 if __name__ == '__main__':
     app.run(debug=True)
