@@ -2,7 +2,7 @@ from sqlalchemy import create_engine, inspect
 from sqlalchemy_utils import database_exists
 from sqlalchemy import MetaData
 from sqlalchemy.orm import Session, registry
-from .tables import *
+from tables import *
 
 class Connection():
     def __init__(self):
@@ -41,3 +41,7 @@ class Connection():
         Relacionados.__table__.create(bind=self.engine, checkfirst=True)
 
         self.add_user()
+
+if __name__ == '__main__':
+    connection = Connection()
+    connection.create_db()
