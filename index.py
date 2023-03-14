@@ -3,7 +3,9 @@ from controllers.controller_usuario import ControllerUsuario
 from controllers.controller_permissao import ControllerPermissao
 app = Flask(__name__)
 
-@app.route('/baseconhecimento/v1/usuario', methods=['GET', 'POST'])
+base_url = '/baseconhecimento/v1/'
+
+@app.route(f'{base_url}/usuario', methods=['GET', 'POST'])
 def usuario():
     if request.method == 'POST':
         controller = ControllerUsuario()
@@ -14,7 +16,7 @@ def usuario():
     else:
         pass
 
-@app.route('/baseconhecimento/v1/permissao', methods=['GET', 'POST'])
+@app.route(f'{base_url}/permissao', methods=['GET', 'POST'])
 def permissao():
     if request.method == 'POST':
         controller = ControllerPermissao()
