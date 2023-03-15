@@ -8,7 +8,7 @@ class ControllerAnexo(Anexo):
         super().__init__()
         self.connection = Connection()
 
-        self.sessao = Session(blind=self.connection.engine)
+        self.sessao = Session(bind=self.connection.engine)
 
     def insert_or_update(self, dados_list):
         try:
