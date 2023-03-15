@@ -12,17 +12,17 @@ class ControllerAnexo(Anexo):
 
     def insert_or_update(self, dados_list):
         try:
-            for daddos_dict in dados_list:
-                if daddos_dict.get('id_anexo'):
+            for dados_dict in dados_list:
+                if dados_dict.get('id_anexo'):
                     anexo = self.sessao.query(Anexo).filter_by(
-                        id_anexo=daddos_dict['id_anexo']).first()
+                        id_anexo=dados_dict['id_anexo']).first()
                     if anexo:
-                        anexo.anexo = daddos_dict['anexo']
-                        anexo.id_conhecimento = daddos_dict['id_conhecimento']
+                        anexo.anexo = dados_dict['anexo']
+                        anexo.id_conhecimento = dados_dict['id_conhecimento']
 
                 else:
                     anexo_insert = Anexo(
-                        anexo=daddos_dict['anexo'], id_conhecimento=daddos_dict['id_conhecimento'])
+                        anexo=dados_dict['anexo'], id_conhecimento=dados_dict['id_conhecimento'])
                     self.sessao.add(anexo_insert)
 
                 self.sessao.commit()
