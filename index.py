@@ -1,10 +1,11 @@
 from flask import Flask, request, jsonify
+
 from controllers.controller_usuario import ControllerUsuario
 from controllers.controller_permissao import ControllerPermissao
 from controllers.controller_anexo import ControllerAnexo
 from controllers.controller_conhecimento import ControllerConhecimento
-app = Flask(__name__)
 
+app = Flask(__name__)
 
 base_url = '/baseconhecimento/v1/'
 
@@ -30,7 +31,6 @@ def permissao():
     else:
         pass
 
-
 @app.route(f'{base_url}/anexo', methods=['GET', 'POST'])
 def anexo():
     if request.method == 'POST':
@@ -53,7 +53,6 @@ def conhecimento():
         return jsonify(controller.insert_or_update(dados_list))
     else:
         pass
-
 
 if __name__ == '__main__':
     app.run(debug=True)
