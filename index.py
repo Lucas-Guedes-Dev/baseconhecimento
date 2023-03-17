@@ -4,10 +4,12 @@ from controllers.controller_usuario import ControllerUsuario
 from controllers.controller_permissao import ControllerPermissao
 from controllers.controller_anexo import ControllerAnexo
 from controllers.controller_conhecimento import ControllerConhecimento
+from controllers.controller_pessoa import ControllerPessoa
 
 app = Flask(__name__)
 
 base_url = '/baseconhecimento/v1/'
+
 
 @app.route(f'{base_url}/usuario', methods=['GET', 'POST'])
 def usuario():
@@ -20,6 +22,7 @@ def usuario():
     else:
         pass
 
+
 @app.route(f'{base_url}/permissao', methods=['GET', 'POST'])
 def permissao():
     if request.method == 'POST':
@@ -30,6 +33,7 @@ def permissao():
         return jsonify(controller.insert_or_update(dados_list))
     else:
         pass
+
 
 @app.route(f'{base_url}/anexo', methods=['GET', 'POST'])
 def anexo():
@@ -53,6 +57,19 @@ def conhecimento():
         return jsonify(controller.insert_or_update(dados_list))
     else:
         pass
+
+
+@app.route(f'{base_url}/pessoa', methods=['GET', 'POST'])
+def pessoa():
+    if request.method == 'POST':
+        controller = ControllerPessoa()
+
+        dados_list = request.get_json()
+
+        return jsonify(controller.insert_or_update(dados_list))
+    else:
+        pass
+
 
 if __name__ == '__main__':
     app.run(debug=True)
