@@ -21,9 +21,10 @@ class ControllerPessoa(Pessoa):
                         pessoa.documento = dados_dict['documento']
                         pessoa.tipo_documento = dados_dict['tipo_documento']
                         pessoa.ativo = dados_dict['ativo']
+                        pessoa.id_usuario = dados_dict['id_usuario']
                 else:
                     pessoa_insert = Pessoa(
-                        nome=dados_dict['nome'], documento=dados_dict['documento'], tipo_documento=dados_dict['tipo_documento'], ativo=dados_dict['ativo'])
+                        nome=dados_dict['nome'], documento=dados_dict['documento'], tipo_documento=dados_dict['tipo_documento'], ativo=dados_dict['ativo'], id_usuario=dados_dict['id_usuario'])
                     self.sessao.add(pessoa_insert)
 
                 self.sessao.commit()
