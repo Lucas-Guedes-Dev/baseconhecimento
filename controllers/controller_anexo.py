@@ -2,7 +2,6 @@ from database.tables import Anexo
 from database.connection import Connection
 from sqlalchemy.orm import Session
 
-
 class ControllerAnexo(Anexo):
     def __init__(self):
         super().__init__()
