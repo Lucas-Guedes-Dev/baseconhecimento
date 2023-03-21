@@ -5,6 +5,7 @@ from controllers.controller_permissao import ControllerPermissao
 from controllers.controller_anexo import ControllerAnexo
 from controllers.controller_conhecimento import ControllerConhecimento
 from controllers.controller_pessoa import ControllerPessoa
+from controllers.controller_relacionados import ControllerRelacionados
 
 app = Flask(__name__)
 
@@ -63,6 +64,18 @@ def conhecimento():
 def pessoa():
     if request.method == 'POST':
         controller = ControllerPessoa()
+
+        dados_list = request.get_json()
+
+        return jsonify(controller.insert_or_update(dados_list))
+    else:
+        pass
+
+
+@app.route(f'{base_url}/relacionados', methods=['GET', 'POST'])
+def relacionados():
+    if request.method == 'POST':
+        controller = ControllerRelacionados()
 
         dados_list = request.get_json()
 
