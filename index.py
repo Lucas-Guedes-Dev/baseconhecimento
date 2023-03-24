@@ -31,7 +31,7 @@ def usuario():
 
         return jsonify(return_list)
     
-    
+
 @app.route(f'{base_url}/permissao', methods=['GET', 'POST'])
 def permissao():
     if request.method == 'POST':
@@ -50,6 +50,7 @@ def permissao():
         return_list = ControllerBusca(controller).select(paramatros_url)
 
         return jsonify(return_list)
+
 
 @app.route(f'{base_url}/anexo', methods=['GET', 'POST'])
 def anexo():
