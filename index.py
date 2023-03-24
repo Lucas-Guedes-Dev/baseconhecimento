@@ -98,9 +98,13 @@ def pessoa():
         return jsonify(controller.insert_or_update(dados_list))
     
     elif request.method == 'GET':
+        paramatros_url = request.args
+        
+        controller = ControllerPessoa
 
-        pass
+        return_list = ControllerBusca(controller).select(paramatros_url)
 
+        return jsonify(return_list)
 
 @app.route(f'{base_url}/relacionados', methods=['GET', 'POST'])
 def relacionados():
@@ -112,9 +116,14 @@ def relacionados():
         return jsonify(controller.insert_or_update(dados_list))
     
     elif request.method == 'GET':
+        
+        paramatros_url = request.args
+        
+        controller = ControllerPessoa
 
-        pass
+        return_list = ControllerBusca(controller).select(paramatros_url)
 
+        return jsonify(return_list)
 
 if __name__ == '__main__':
     app.run(debug=True)
