@@ -60,7 +60,7 @@ def anexo():
         dados_list = request.get_json()
 
         return jsonify(controller.insert_or_update(dados_list))
-    else:
+    elif request.method == 'GET':
         paramatros_url = request.args
 
         controller = ControllerAnexo
@@ -78,7 +78,7 @@ def conhecimento():
         dados_list = request.get_json()
 
         return jsonify(controller.insert_or_update(dados_list))
-    else:
+    elif request.method == 'GET':
         paramatros_url = request.args
         
         controller = ControllerConhecimento
@@ -96,7 +96,9 @@ def pessoa():
         dados_list = request.get_json()
 
         return jsonify(controller.insert_or_update(dados_list))
-    else:
+    
+    elif request.method == 'GET':
+
         pass
 
 
@@ -108,7 +110,9 @@ def relacionados():
         dados_list = request.get_json()
 
         return jsonify(controller.insert_or_update(dados_list))
-    else:
+    
+    elif request.method == 'GET':
+
         pass
 
 
