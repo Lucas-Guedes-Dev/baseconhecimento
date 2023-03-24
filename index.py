@@ -31,6 +31,7 @@ def usuario():
 
         return jsonify(return_list)
     
+    
 @app.route(f'{base_url}/permissao', methods=['GET', 'POST'])
 def permissao():
     if request.method == 'POST':
