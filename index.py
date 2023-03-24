@@ -59,7 +59,13 @@ def anexo():
 
         return jsonify(controller.insert_or_update(dados_list))
     else:
-        pass
+        paramatros_url = request.args
+
+        controller = ControllerAnexo
+
+        return_list = ControllerBusca(controller).select(paramatros_url)
+
+        return jsonify(return_list)
 
 
 @app.route(f'{base_url}/conhecimento', methods=['GET', 'POST'])
@@ -71,7 +77,13 @@ def conhecimento():
 
         return jsonify(controller.insert_or_update(dados_list))
     else:
-        pass
+        paramatros_url = request.args
+        
+        controller = ControllerConhecimento
+
+        return_list = ControllerBusca(controller).select(paramatros_url)
+
+        return jsonify(return_list)
 
 
 @app.route(f'{base_url}/pessoa', methods=['GET', 'POST'])
